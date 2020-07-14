@@ -1,0 +1,1 @@
+./ri36 mono gfu ../RI-Datasets/AIDS/AIDS40000/AIDO99SD.40000.txt ../RI-Datasets/AIDS/AIDS40000/queries/query4_001.txt

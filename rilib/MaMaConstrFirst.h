@@ -77,7 +77,7 @@ public:
 
 
 		while(si < nof_sn){
-
+			//TODO: provare a parallelizzare questo if. che Gesù ce la mandi buona. 
 			if(nqueueL == nqueueR){
 				//if queue is empty....
 				maxi = -1;
@@ -91,7 +91,7 @@ public:
 					nIT++;
 				}
 				map_state_to_node[si] = maxi;
-				map_node_to_state[maxi] = si;
+				map_node_to_state[maxi] = si; 					  
 				t_parent_type[maxi] = PARENTTYPE_NULL;
 				t_parent_node[maxi] = -1;
 
@@ -114,8 +114,8 @@ public:
 					nIT++;
 				}
 			}
-
-
+			
+			     
 			if(nqueueL != nqueueR-1){
 				maxi = nqueueL;
 				for(int mi=maxi+1; mi<nqueueR; mi++){
@@ -204,7 +204,7 @@ public:
 
 			//nodes_attrs[si] = ssg.nodes_attrs[n];
 			if(t_parent_node[n] != -1)
-			parent_state[si] = map_node_to_state[t_parent_node[n]];
+				parent_state[si] = map_node_to_state[t_parent_node[n]];
 			else
 				parent_state[si] = -1;
 			parent_type[si] = t_parent_type[n];
@@ -232,7 +232,7 @@ public:
 
 			edges[si] = new MaMaEdge[e_count];
 			e_count = 0;
-			for(i=0; i<ssg.out_adj_sizes[n];i++){
+			for(i=0; i<ssg.out_adj_sizes[n];i++){ 
 				if(map_node_to_state[ssg.out_adj_list[n][i]] < si){
 					edges[si][e_count].source = map_node_to_state[n];
 					edges[si][e_count].target = map_node_to_state[ssg.out_adj_list[n][i]];

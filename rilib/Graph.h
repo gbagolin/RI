@@ -139,8 +139,8 @@ public:
 			std::cout<<"| \tout_adjs["<<out_adj_sizes[i]<<"][";
 			for(int j=0; j<out_adj_sizes[i]; j++){
 				std::cout<<out_adj_list[i][j];
-				if(j!=out_adj_sizes[i]-1)
-					std::cout<<", ";
+				if(j!=out_adj_sizes[i]-1) 
+					std::cout<<", "; 
 			}
 			std::cout<<"]\n";
 			std::cout<<"| \tin_adjs["<<in_adj_sizes[i]<<"][";
