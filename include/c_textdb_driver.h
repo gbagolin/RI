@@ -168,6 +168,7 @@ int read_gfu(const char* fileName, FILE* fd, Graph* graph){
 	//node labels
 	graph->nodes_attrs = (void**)malloc(graph->nof_nodes * sizeof(void*));
 	char *label = new char[STR_READ_LENGTH];
+	//TODO: provare a parallelizzare questo for. 
 	for(i=0; i<graph->nof_nodes; i++){
 		if (fscanf(fd,"%s",label) != 1){
 			return -1;
@@ -182,6 +183,7 @@ int read_gfu(const char* fileName, FILE* fd, Graph* graph){
 
 	gr_neighs_t **ns_o = (gr_neighs_t**)malloc(graph->nof_nodes * sizeof(gr_neighs_t));
 	gr_neighs_t **ns_i = (gr_neighs_t**)malloc(graph->nof_nodes * sizeof(gr_neighs_t));
+	//TODO: provare a parallelizzare anche questo for. 
 	for(i=0; i<graph->nof_nodes; i++){
 		ns_o[i] = NULL;
 		ns_i[i] = NULL;

@@ -147,6 +147,7 @@ public:
 			candidatesIT[si]++;
 
 			//finchè non ne trova uno effettivamente compatibile 
+			//TODO: questo è parallelizzabile. 
 			while(candidatesIT[si] < candidatesSize[si]){
 				//triedcouples++;
 				//passo il nodo target che voglio considerare. 

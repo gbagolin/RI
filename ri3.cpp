@@ -130,7 +130,7 @@ void usage(char* args0){
 	std::cout<<"\tgraph input format:\n";
 	std::cout<<"\t\tgfu = undirect graphs with labels on nodes\n";
 	std::cout<<"\t\tgfd = direct graphs with labels on nodes\n";
-	std::cout<<"\t\tgfd = direct graphs with one single label on nodes\n";
+	std::cout<<"\t\tgfda = direct graphs with one single label on nodes\n";
 	std::cout<<"\t\tgeu = undirect graphs with labels both on nodes and edges\n";
 	std::cout<<"\t\tged = direct graphs with labels both on nodes and edges\n";
 	std::cout<<"\t\tvfu = VF2Lib undirect unlabeled format\n";
@@ -193,6 +193,7 @@ int match(
 	//read the query graph
 	load_s_q=start_time();
 	Graph *query = new Graph();
+	
 	rret = read_graph(queryfile.c_str(), query, filetype);
 	load_t_q+=end_time(load_s_q);
 	if(rret !=0){

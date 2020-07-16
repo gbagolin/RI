@@ -37,7 +37,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 namespace rilib{
 
-
+//Classe che rappresenta l'arco di ogni nodo del grafo pattern
 class MaMaEdge{
 public:
 	int source;
@@ -56,30 +56,35 @@ public:
 		attr = NULL;
 	}
 };
-
+//Tipo di arco che va da padre verso figlio dell'indicizzazione ordinata.  
 enum MAMA_PARENTTYPE {PARENTTYPE_IN, PARENTTYPE_OUT, PARENTTYPE_NULL};
 
 class MatchingMachine{
 public:
-
+	//numero di nodi grafo pattern
 	int nof_sn;
-
+	//attributi di ogni nodo
 	void** nodes_attrs;				//indexed by state_id
+	//array rappresentante la quantità di archi per ogni nodo, totali, uscenti, entranti. 
 	int* edges_sizes;				//indexed by state_id
 	int* o_edges_sizes;				//indexed by state_id
 	int* i_edges_sizes;				//indexed by state_id
+	//L'insieme di archi del grafo pattern ordinato. 
 	MaMaEdge** edges;				//indexed by state_id, map on states  (0,1) = (state0, state1)
-
+	//dato un indice del nodo restituisce la sua posizione nell'ordinamento
 	int* map_node_to_state;			//indexed by node_id
+	//data una posizione restituisce il nodo corrispondente. 
 	int* map_state_to_node;			//indexed by state_id
-
+	//restituisce la posizione del padre di un nodo nella lista ordinata. 
 	int* parent_state;				//indexed by state_id
-	MAMA_PARENTTYPE* parent_type;	//indexed by state id
+	//dato un indice restituisce il tipo di arco che dal padre va verso il figlio. 
+	MAMA_PARENTTYPE* parent_type;	//indexed by state id 
 
-
+	//prede in input il grafo pattern. 
 	MatchingMachine(Graph& query){
-
+		
 		nof_sn = query.nof_nodes;
+		//alloca lo spazio. 
 		nodes_attrs = new void*[nof_sn];
 		edges_sizes = (int*) calloc(nof_sn, sizeof(int));
 		o_edges_sizes = (int*) calloc(nof_sn, sizeof(int));
