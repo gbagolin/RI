@@ -1,0 +1,16 @@
+INCLUDES= -I ./rilib/ -I ./include/
+CC= nvcc 
+CFLAGS= -w -std=c++11
+
+SOURCES= ri3.cu
+OBJECTS=$(SOURCES:.cu=.o)
+EXECUTABLE=ri36
+
+
+all:	$(SOURCES) $(EXECUTABLE)
+
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(OBJECTS) -o $@
+
+.cu.o:
+	$(CC) $(CFLAGS) $< $(INCLUDES) -o $@  

@@ -50,12 +50,18 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "SubGISolver.h"
 #include "InducedSubGISolver.h"
 
-#define PRINT_MATCHES
+//#define PRINT_MATCHES
 //#define CSV_FORMAT
 
 
 using namespace rilib;
+using namespace std; 
 
+
+__global__
+void findFirstElement() {
+	printf("sono il thread numero: %d\n", threadIdx.x); 
+}
 
 void usage(char* args0);
 int match(MATCH_TYPE matchtype, GRAPH_FILE_TYPE filetype,	std::string& referencefile,	std::string& queryfile);
@@ -204,6 +210,7 @@ int match(
 	MaMaConstrFirst* mama = new MaMaConstrFirst(*query);
 	mama->build(*query);
 	make_mama_t+=end_time(make_mama_s);
+	
 
 	//mama->print();
 
@@ -284,6 +291,8 @@ int match(
 	std::cout<<"matching time: "<<match_t<<"\n";
 	std::cout<<"number of found matches: "<<matchcount<<"\n";
 	std::cout<<"search space size: "<<matchedcouples<<"\n";
+	cout << "mama time: " << make_mama_t << endl; 
+	findFirstElement<<< 2, 2>>> ();
 #endif
 
 //	delete mama;

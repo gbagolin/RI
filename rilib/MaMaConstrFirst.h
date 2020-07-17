@@ -35,6 +35,13 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #include "Graph.h"
 
+
+// __global__
+// void findFirstElement() {
+// 	printf("sono il thread numero: %d", threadIdx.x); 
+// }
+
+
 namespace rilib{
 
 class MaMaConstrFirst : public MatchingMachine{
@@ -46,6 +53,8 @@ public:
 	}
 
 	virtual void build(Graph& ssg){
+		printf("sono dentro a mia mamma"); 
+		//findFirstElement<<< 1,1024>>> ();
 		//tipo di nodo che sto analizzando, 
 		//ns_core = nodo in analisi, ns_cneigh = nodo vicino al nodo core, ns_unv = nodo non ancora visitato. 
 		enum NodeFlag {NS_CORE, NS_CNEIGH, NS_UNV};
